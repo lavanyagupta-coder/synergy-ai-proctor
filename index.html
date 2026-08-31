@@ -1,0 +1,2841 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Lavanya | Web Dev Core</title>
+
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+
+            font-family: "Inter", sans-serif;
+
+            background: #050505;
+
+            color: white;
+
+            overflow-x: hidden;
+
+        }
+
+
+        /* =====================================
+           COLORS / GENERAL
+        ===================================== */
+
+        :root {
+
+            --orange: #ff7a18;
+            --light-orange: #ffad4d;
+
+            --blue: #6da8ff;
+
+            --dark: #050505;
+            --dark-2: #0b0b0d;
+
+        }
+
+
+
+        /* =====================================
+           AI INTRO
+        ===================================== */
+
+        .intro-section {
+
+            height: 100vh;
+
+            min-height: 700px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+
+            background:
+
+                radial-gradient(
+                    circle at 50% 50%,
+                    rgba(255, 122, 24, .16),
+                    transparent 28%
+                ),
+
+                radial-gradient(
+                    circle at 20% 20%,
+                    rgba(80, 130, 255, .10),
+                    transparent 25%
+                ),
+
+                radial-gradient(
+                    circle at 85% 25%,
+                    rgba(255, 122, 24, .12),
+                    transparent 25%
+                ),
+
+                #050505;
+
+        }
+
+
+
+        /* =====================================
+           IDENTITY
+        ===================================== */
+
+        .identity {
+
+            position: absolute;
+
+            top: 35px;
+
+            left: 50px;
+
+            z-index: 30;
+
+        }
+
+
+        .identity h1 {
+
+            font-size: 15px;
+
+            letter-spacing: 5px;
+
+            font-weight: 700;
+
+        }
+
+
+        .identity-line {
+
+            width: 80px;
+
+            height: 2px;
+
+            margin: 10px 0;
+
+
+            background:
+
+                linear-gradient(
+                    90deg,
+                    var(--orange),
+                    var(--blue),
+                    transparent
+                );
+
+        }
+
+
+        .identity p {
+
+            font-size: 9px;
+
+            letter-spacing: 4px;
+
+            color: #a0a0aa;
+
+        }
+
+
+
+        /* =====================================
+           GRID
+        ===================================== */
+
+        .grid {
+
+            position: absolute;
+
+            inset: -50%;
+
+
+            background-image:
+
+                linear-gradient(
+                    rgba(255,122,24,.045) 1px,
+                    transparent 1px
+                ),
+
+                linear-gradient(
+                    90deg,
+                    rgba(100,160,255,.04) 1px,
+                    transparent 1px
+                );
+
+
+            background-size: 70px 70px;
+
+
+            transform:
+
+                perspective(700px)
+                rotateX(62deg);
+
+
+            animation:
+
+                gridMove 12s linear infinite;
+
+        }
+
+
+        @keyframes gridMove {
+
+            from {
+
+                background-position: 0 0;
+
+            }
+
+            to {
+
+                background-position: 0 70px;
+
+            }
+
+        }
+
+
+
+        /* =====================================
+           LIGHTS
+        ===================================== */
+
+        .light {
+
+            position: absolute;
+
+            width: 280px;
+
+            height: 280px;
+
+            border-radius: 50%;
+
+            filter: blur(30px);
+
+            animation:
+
+                lightPulse 5s ease-in-out infinite;
+
+        }
+
+
+        .orange-light {
+
+            background:
+
+                radial-gradient(
+                    circle,
+                    rgba(255,122,24,.45),
+                    transparent 70%
+                );
+
+        }
+
+
+        .blue-light {
+
+            background:
+
+                radial-gradient(
+                    circle,
+                    rgba(70,130,255,.28),
+                    transparent 70%
+                );
+
+        }
+
+
+        .light-one {
+
+            left: -100px;
+
+            top: 80px;
+
+        }
+
+
+        .light-two {
+
+            right: -100px;
+
+            top: 120px;
+
+        }
+
+
+        @keyframes lightPulse {
+
+            0%,
+            100% {
+
+                transform: scale(1);
+
+                opacity: .5;
+
+            }
+
+            50% {
+
+                transform: scale(1.25);
+
+                opacity: 1;
+
+            }
+
+        }
+
+
+
+        /* =====================================
+           PARTICLES
+        ===================================== */
+
+        .particle {
+
+            position: absolute;
+
+            width: 4px;
+
+            height: 4px;
+
+            border-radius: 50%;
+
+            background: var(--orange);
+
+            box-shadow:
+
+                0 0 10px var(--orange),
+                0 0 25px rgba(255,122,24,.7);
+
+
+            animation:
+
+                particleFloat linear infinite;
+
+        }
+
+
+        .particle.blue {
+
+            background: var(--blue);
+
+            box-shadow:
+
+                0 0 10px var(--blue),
+                0 0 25px rgba(80,140,255,.7);
+
+        }
+
+
+        @keyframes particleFloat {
+
+            0% {
+
+                transform:
+
+                    translateY(120px)
+                    scale(.5);
+
+                opacity: 0;
+
+            }
+
+
+            20% {
+
+                opacity: 1;
+
+            }
+
+
+            100% {
+
+                transform:
+
+                    translateY(-850px)
+                    translateX(70px)
+                    scale(1.4);
+
+                opacity: 0;
+
+            }
+
+        }
+
+
+
+        /* =====================================
+           AI AREA
+        ===================================== */
+
+        .ai-section {
+
+            position: relative;
+
+            z-index: 10;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            margin-top: -30px;
+
+        }
+
+
+
+        /* =====================================
+           ROBOT
+        ===================================== */
+
+        .robot-wrapper {
+
+            position: relative;
+
+            width: 310px;
+
+            height: 310px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+
+            opacity: 0;
+
+
+            transform:
+
+                translateY(150px)
+                scale(.6);
+
+
+            transition:
+
+                1.5s cubic-bezier(.16,.84,.3,1);
+
+        }
+
+
+        .robot-wrapper.active {
+
+            opacity: 1;
+
+            transform:
+
+                translateY(0)
+                scale(1);
+
+        }
+
+
+        .orbit-one {
+
+            position: absolute;
+
+            width: 280px;
+
+            height: 280px;
+
+            border-radius: 50%;
+
+
+            border:
+
+                1px solid rgba(255,122,24,.35);
+
+
+            animation:
+
+                rotateOrbit 10s linear infinite;
+
+        }
+
+
+        .orbit-two {
+
+            position: absolute;
+
+            width: 340px;
+
+            height: 150px;
+
+            border-radius: 50%;
+
+
+            border:
+
+                1px solid rgba(100,160,255,.25);
+
+
+            animation:
+
+                rotateOrbit 8s linear infinite reverse;
+
+        }
+
+
+        @keyframes rotateOrbit {
+
+            from {
+
+                transform: rotate(0deg);
+
+            }
+
+            to {
+
+                transform: rotate(360deg);
+
+            }
+
+        }
+
+
+        .robot {
+
+            width: 190px;
+
+            height: 190px;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+
+            background:
+
+                radial-gradient(
+                    circle at 35% 25%,
+
+                    #fff3e8,
+
+                    #ffb16e 18%,
+
+                    #6b3f36 45%,
+
+                    #101018 75%
+                );
+
+
+            box-shadow:
+
+                0 0 40px var(--orange),
+
+                0 0 100px rgba(255,122,24,.4),
+
+                0 0 150px rgba(80,130,255,.15),
+
+
+                inset 0 0 30px
+                rgba(255,255,255,.3);
+
+
+            animation:
+
+                robotFloat 4s ease-in-out infinite;
+
+        }
+
+
+        @keyframes robotFloat {
+
+            0%,
+            100% {
+
+                transform:
+
+                    translateY(0)
+                    rotate(-2deg);
+
+            }
+
+
+            50% {
+
+                transform:
+
+                    translateY(-18px)
+                    rotate(2deg);
+
+            }
+
+        }
+
+
+
+        /* =====================================
+           ROBOT FACE
+        ===================================== */
+
+        .face {
+
+            width: 145px;
+
+            height: 100px;
+
+            border-radius: 55px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-around;
+
+
+            background:
+
+                linear-gradient(
+                    145deg,
+                    #050505,
+                    #20130d
+                );
+
+
+            box-shadow:
+
+                inset 0 0 25px #000,
+
+                0 0 20px
+                rgba(255,122,24,.4);
+
+        }
+
+
+        .eye {
+
+            width: 36px;
+
+            height: 20px;
+
+            border-top:
+
+                7px solid var(--orange);
+
+            border-radius: 50%;
+
+
+            box-shadow:
+
+                0 0 12px var(--orange),
+                0 0 25px rgba(255,122,24,.8);
+
+        }
+
+
+
+        /* =====================================
+           PLATFORM
+        ===================================== */
+
+        .platform {
+
+            position: relative;
+
+            margin-top: -15px;
+
+            width: 430px;
+
+            height: 90px;
+
+            border-radius: 50%;
+
+
+            background:
+
+                radial-gradient(
+
+                    ellipse,
+
+                    rgba(255,180,100,.8),
+
+                    rgba(255,122,24,.25) 35%,
+
+                    transparent 70%
+
+                );
+
+
+            animation:
+
+                platformPulse 3s ease-in-out infinite;
+
+        }
+
+
+        .platform::before {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 15px;
+
+            border-radius: 50%;
+
+
+            border:
+
+                2px solid
+                rgba(255,150,70,.7);
+
+
+            box-shadow:
+
+                0 0 25px
+                rgba(255,122,24,.8);
+
+        }
+
+
+        @keyframes platformPulse {
+
+            0%,
+            100% {
+
+                transform: scale(1);
+
+            }
+
+            50% {
+
+                transform: scale(1.07);
+
+            }
+
+        }
+
+
+
+        /* =====================================
+           VOICE WAVE
+        ===================================== */
+
+        .wave {
+
+            height: 40px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 5px;
+
+            margin-top: 18px;
+
+            opacity: 0;
+
+        }
+
+
+        .wave.active {
+
+            opacity: 1;
+
+        }
+
+
+        .bar {
+
+            width: 4px;
+
+            height: 8px;
+
+            border-radius: 10px;
+
+            background: var(--orange);
+
+
+            box-shadow:
+
+                0 0 10px var(--orange);
+
+
+            animation:
+
+                waveMove .7s ease-in-out infinite alternate;
+
+        }
+
+
+        .bar:nth-child(2) {
+
+            animation-delay: .1s;
+
+        }
+
+        .bar:nth-child(3) {
+
+            animation-delay: .2s;
+
+        }
+
+        .bar:nth-child(4) {
+
+            animation-delay: .3s;
+
+        }
+
+        .bar:nth-child(5) {
+
+            animation-delay: .4s;
+
+        }
+
+
+        @keyframes waveMove {
+
+            from {
+
+                height: 7px;
+
+            }
+
+            to {
+
+                height: 35px;
+
+            }
+
+        }
+
+
+
+        /* =====================================
+           SPEECH TEXT
+        ===================================== */
+
+        .speech-text {
+
+            margin-top: 22px;
+
+            min-height: 100px;
+
+            text-align: center;
+
+            max-width: 900px;
+
+            padding: 0 20px;
+
+
+            font-size:
+
+                clamp(28px,4vw,62px);
+
+
+            font-weight: 600;
+
+            line-height: 1.18;
+
+            letter-spacing: -2px;
+
+        }
+
+
+        .word {
+
+            display: inline-block;
+
+            margin-right: 12px;
+
+            opacity: 0;
+
+
+            transform:
+
+                translateY(15px);
+
+
+            filter: blur(8px);
+
+            transition: .3s ease;
+
+        }
+
+
+        .word.visible {
+
+            opacity: 1;
+
+            transform:
+
+                translateY(0);
+
+
+            filter: blur(0);
+
+        }
+
+
+        .highlight {
+
+            color: var(--orange);
+
+
+            text-shadow:
+
+                0 0 25px
+                rgba(255,122,24,.5);
+
+        }
+
+
+
+        /* =====================================
+           START BUTTON
+        ===================================== */
+
+        .start-button {
+
+            position: absolute;
+
+            bottom: 70px;
+
+            left: 50%;
+
+
+            transform:
+
+                translateX(-50%);
+
+
+            padding:
+
+                16px 36px;
+
+
+            border-radius: 50px;
+
+
+            border:
+
+                1px solid
+                rgba(255,150,80,.5);
+
+
+            background:
+
+                rgba(255,122,24,.08);
+
+
+            backdrop-filter:
+
+                blur(15px);
+
+
+            color: white;
+
+            font-family: inherit;
+
+            font-size: 11px;
+
+            font-weight: 600;
+
+            letter-spacing: 3px;
+
+            cursor: pointer;
+
+            z-index: 20;
+
+
+            transition: .4s;
+
+        }
+
+
+        .start-button:hover {
+
+            background:
+
+                rgba(255,122,24,.2);
+
+
+            box-shadow:
+
+                0 0 40px
+                rgba(255,122,24,.4);
+
+
+            transform:
+
+                translateX(-50%)
+                scale(1.06);
+
+        }
+
+
+        .start-button.hide {
+
+            opacity: 0;
+
+            pointer-events: none;
+
+        }
+
+
+
+        /* =====================================
+           WE BUILD SECTION
+        ===================================== */
+
+        .build-section {
+
+            min-height: 100vh;
+
+            padding: 130px 8%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+
+            background:
+
+                radial-gradient(
+                    circle at 50% 20%,
+                    rgba(255,122,24,.12),
+                    transparent 30%
+                ),
+
+                #0a0a0c;
+
+        }
+
+
+        .build-content {
+
+            max-width: 1300px;
+
+        }
+
+
+        .section-label {
+
+            font-size: 11px;
+
+            letter-spacing: 6px;
+
+            color: var(--orange);
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .build-section h2 {
+
+            font-size:
+
+                clamp(55px,9vw,150px);
+
+
+            line-height: .95;
+
+            letter-spacing: -7px;
+
+        }
+
+
+        .build-section h2 span {
+
+            color: var(--orange);
+
+        }
+
+
+        .build-section .subtitle {
+
+            margin-top: 35px;
+
+            font-size: 17px;
+
+            color: #96969e;
+
+            letter-spacing: 1px;
+
+        }
+
+
+
+        /* =====================================
+           LAVANYA INTRO
+        ===================================== */
+
+        .lavanya-section {
+
+            min-height: 100vh;
+
+            position: relative;
+
+            overflow: hidden;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 100px 8%;
+
+
+            background:
+
+                radial-gradient(
+                    circle at 50% 50%,
+                    rgba(255,122,24,.15),
+                    transparent 35%
+                ),
+
+                radial-gradient(
+                    circle at 80% 30%,
+                    rgba(80,130,255,.1),
+                    transparent 25%
+                ),
+
+                #050505;
+
+        }
+
+
+        .lavanya-container {
+
+            width: 100%;
+
+            max-width: 1200px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 80px;
+
+            position: relative;
+
+            z-index: 2;
+
+        }
+
+
+
+        /* PHOTO */
+
+        .photo-wrapper {
+
+            position: relative;
+
+            width: min(430px, 80vw);
+
+        }
+
+
+        .photo-glow {
+
+            position: absolute;
+
+            inset: 15%;
+
+
+            background:
+
+                radial-gradient(
+                    circle,
+                    rgba(255,122,24,.4),
+                    transparent 65%
+                );
+
+
+            filter: blur(40px);
+
+            z-index: -1;
+
+        }
+
+
+        .lavanya-photo {
+
+            width: 100%;
+
+            display: block;
+
+            position: relative;
+
+            z-index: 2;
+
+
+            filter:
+
+                drop-shadow(
+                    0 30px 40px
+                    rgba(0,0,0,.6)
+                );
+
+
+            animation:
+
+                photoFloat 5s ease-in-out infinite;
+
+        }
+
+
+        @keyframes photoFloat {
+
+            0%,
+            100% {
+
+                transform:
+
+                    translateY(0)
+                    rotate(-1deg);
+
+            }
+
+
+            50% {
+
+                transform:
+
+                    translateY(-15px)
+                    rotate(1deg);
+
+            }
+
+        }
+
+
+
+        /* TEXT */
+
+        .lavanya-info {
+
+            position: relative;
+
+            max-width: 420px;
+
+        }
+
+
+        .lavanya-info .mini-label {
+
+            font-size: 11px;
+
+            letter-spacing: 6px;
+
+            color: #8d8d98;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .lavanya-info h2 {
+
+            font-size:
+
+                clamp(60px,8vw,120px);
+
+
+            line-height: .85;
+
+            letter-spacing: -6px;
+
+        }
+
+
+        .lavanya-info h2 span {
+
+            color: var(--orange);
+
+        }
+
+
+        .lavanya-info p {
+
+            margin-top: 25px;
+
+            color: #a3a3ad;
+
+            font-size: 16px;
+
+            line-height: 1.7;
+
+        }
+
+
+
+        /* =====================================
+           QUIRKY LABELS
+        ===================================== */
+
+        .tag {
+
+            position: absolute;
+
+            padding: 13px 20px;
+
+            border-radius: 20px;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            letter-spacing: 1px;
+
+
+            background:
+
+                rgba(255,255,255,.96);
+
+
+            color: #171717;
+
+
+            box-shadow:
+
+                0 15px 35px
+                rgba(0,0,0,.25);
+
+
+            animation:
+
+                tagFloat 4s ease-in-out infinite;
+
+        }
+
+
+        .tag-one {
+
+            top: 8%;
+
+            left: -15%;
+
+            transform: rotate(-7deg);
+
+        }
+
+
+        .tag-two {
+
+            right: -12%;
+
+            top: 42%;
+
+            transform: rotate(6deg);
+
+            animation-delay: .8s;
+
+            background: var(--orange);
+
+            color: white;
+
+        }
+
+
+        .tag-three {
+
+            bottom: 10%;
+
+            left: -5%;
+
+            transform: rotate(-4deg);
+
+            animation-delay: 1.5s;
+
+            background: #6da8ff;
+
+            color: #07111f;
+
+        }
+
+
+        @keyframes tagFloat {
+
+            0%,
+            100% {
+
+                margin-top: 0;
+
+            }
+
+
+            50% {
+
+                margin-top: -12px;
+
+            }
+
+        }
+
+
+
+        /* ARROWS */
+
+        .arrow {
+
+            position: absolute;
+
+            font-size: 70px;
+
+            color: var(--orange);
+
+            font-family: cursive;
+
+            opacity: .9;
+
+        }
+
+
+        .arrow-one {
+
+            left: -70px;
+
+            top: 100px;
+
+            transform: rotate(-25deg);
+
+        }
+
+
+        .arrow-two {
+
+            right: -60px;
+
+            bottom: 50px;
+
+            color: var(--blue);
+
+            transform: rotate(30deg);
+
+        }
+
+
+
+        /* =====================================
+           SCREENSHOTS
+        ===================================== */
+
+        .showcase {
+
+            min-height: 100vh;
+
+            padding: 130px 7%;
+
+            background: #0a0a0c;
+
+        }
+
+
+        .showcase-header {
+
+            text-align: center;
+
+            margin-bottom: 70px;
+
+        }
+
+
+        .showcase-header p {
+
+            font-size: 11px;
+
+            letter-spacing: 6px;
+
+            color: var(--orange);
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .showcase-header h2 {
+
+            font-size:
+
+                clamp(45px,7vw,110px);
+
+
+            line-height: 1;
+
+            letter-spacing: -6px;
+
+        }
+
+
+        .showcase-header h2 span {
+
+            color: var(--orange);
+
+        }
+
+
+        .screenshots {
+
+            width: 100%;
+
+            max-width: 1500px;
+
+            margin: auto;
+
+
+            display: grid;
+
+            grid-template-columns:
+
+                repeat(2, 1fr);
+
+
+            gap: 30px;
+
+        }
+
+
+        .screenshot-card {
+
+            overflow: hidden;
+
+            border-radius: 25px;
+
+
+            border:
+
+                1px solid
+                rgba(255,122,24,.2);
+
+
+            background:
+
+                #111114;
+
+
+            transition:
+
+                .6s cubic-bezier(.2,.8,.2,1);
+
+        }
+
+
+        .screenshot-card:hover {
+
+            transform:
+
+                translateY(-12px);
+
+
+            border-color:
+
+                rgba(255,122,24,.7);
+
+
+            box-shadow:
+
+                0 30px 90px
+                rgba(255,122,24,.18);
+
+        }
+
+
+        .screenshot-image {
+
+            width: 100%;
+
+            display: block;
+
+            object-fit: contain;
+
+
+            transition: .7s ease;
+
+        }
+
+
+        .screenshot-card:hover .screenshot-image {
+
+            transform: scale(1.03);
+
+        }
+
+
+        .card-info {
+
+            padding: 25px;
+
+        }
+
+
+        .card-info h3 {
+
+            font-size: 20px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .card-info p {
+
+            color: #96969f;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+
+        }
+
+
+
+        /* =====================================
+           STATEMENT
+        ===================================== */
+
+        .statement {
+
+            min-height: 75vh;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 100px 20px;
+
+
+            background:
+
+                radial-gradient(
+                    circle at 50% 50%,
+                    rgba(255,122,24,.1),
+                    transparent 30%
+                ),
+
+                #050505;
+
+        }
+
+
+        .statement h2 {
+
+            max-width: 1250px;
+
+            font-size:
+
+                clamp(48px,9vw,150px);
+
+
+            line-height: .95;
+
+            letter-spacing: -7px;
+
+        }
+
+
+        .statement span {
+
+            color: var(--orange);
+
+        }
+
+
+
+        /* =====================================
+           FINAL JOIN TEAM
+        ===================================== */
+
+        .final-section {
+
+            min-height: 100vh;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            position: relative;
+
+            overflow: hidden;
+
+
+            background:
+
+                radial-gradient(
+                    circle at 50% 50%,
+                    rgba(255,122,24,.2),
+                    transparent 35%
+                ),
+
+                #070707;
+
+        }
+
+
+        .final-ring {
+
+            position: absolute;
+
+            width: 650px;
+
+            height: 650px;
+
+            border-radius: 50%;
+
+
+            border:
+
+                1px solid
+                rgba(255,122,24,.15);
+
+
+            animation:
+
+                rotateOrbit 20s linear infinite;
+
+        }
+
+
+        .final-content {
+
+            position: relative;
+
+            z-index: 2;
+
+        }
+
+
+        .final-content p {
+
+            font-size: 11px;
+
+            letter-spacing: 6px;
+
+            color: var(--orange);
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .final-content h2 {
+
+            font-size:
+
+                clamp(65px,13vw,190px);
+
+
+            line-height: .85;
+
+            letter-spacing: -9px;
+
+        }
+
+
+        .final-content h2 span {
+
+            color: var(--orange);
+
+        }
+
+
+        .final-content h3 {
+
+            margin-top: 35px;
+
+            color: #9a9aa3;
+
+            font-weight: 400;
+
+            letter-spacing: 3px;
+
+        }
+
+
+        .signature {
+
+            margin-top: 80px;
+
+        }
+
+
+        .signature-line {
+
+            width: 90px;
+
+            height: 2px;
+
+            margin: auto;
+
+            margin-bottom: 20px;
+
+
+            background:
+
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    var(--orange),
+                    transparent
+                );
+
+        }
+
+
+        .signature h4 {
+
+            font-size: 11px;
+
+            letter-spacing: 5px;
+
+        }
+
+
+        .signature p {
+
+            margin-top: 10px;
+
+            color: #777781;
+
+            font-size: 9px;
+
+        }
+
+
+
+        /* =====================================
+           MOBILE
+        ===================================== */
+
+        @media(max-width: 800px) {
+
+
+            .identity {
+
+                left: 25px;
+
+                top: 25px;
+
+            }
+
+
+            .lavanya-container {
+
+                flex-direction: column;
+
+                gap: 40px;
+
+                text-align: center;
+
+            }
+
+
+            .lavanya-info {
+
+                display: flex;
+
+                flex-direction: column;
+
+                align-items: center;
+
+            }
+
+
+            .tag-one {
+
+                left: -5%;
+
+            }
+
+
+            .tag-two {
+
+                right: -5%;
+
+            }
+
+
+            .screenshots {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .arrow {
+
+                display: none;
+
+            }
+
+
+            .robot-wrapper {
+
+                width: 250px;
+
+                height: 250px;
+
+            }
+
+
+            .robot {
+
+                width: 160px;
+
+                height: 160px;
+
+            }
+
+
+            .face {
+
+                width: 125px;
+
+                height: 85px;
+
+            }
+
+
+            .platform {
+
+                width: 310px;
+
+                height: 70px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+
+<body>
+
+
+    <!-- =====================================
+         AI INTRO
+    ====================================== -->
+
+    <section class="intro-section">
+
+
+        <div class="grid"></div>
+
+
+        <div class="light orange-light light-one"></div>
+
+        <div class="light blue-light light-two"></div>
+
+
+        <!-- PARTICLES -->
+
+        <div
+            class="particle"
+            style="left:10%;bottom:10%;animation-duration:8s;"
+        ></div>
+
+        <div
+            class="particle blue"
+            style="left:22%;bottom:20%;animation-duration:11s;"
+        ></div>
+
+        <div
+            class="particle"
+            style="left:35%;bottom:8%;animation-duration:9s;"
+        ></div>
+
+        <div
+            class="particle blue"
+            style="left:50%;bottom:15%;animation-duration:12s;"
+        ></div>
+
+        <div
+            class="particle"
+            style="left:68%;bottom:8%;animation-duration:10s;"
+        ></div>
+
+        <div
+            class="particle blue"
+            style="left:85%;bottom:18%;animation-duration:9s;"
+        ></div>
+
+
+
+        <!-- TOP LEFT -->
+
+        <div class="identity">
+
+            <h1>LAVANYA</h1>
+
+            <div class="identity-line"></div>
+
+            <p>WEB DEV CORE</p>
+
+        </div>
+
+
+
+        <!-- AI -->
+
+        <div class="ai-section">
+
+
+            <div
+                class="robot-wrapper"
+                id="robotWrapper"
+            >
+
+                <div class="orbit-one"></div>
+
+                <div class="orbit-two"></div>
+
+
+                <div class="robot">
+
+                    <div class="face">
+
+                        <div class="eye"></div>
+
+                        <div class="eye"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="platform"></div>
+
+
+
+            <!-- VOICE WAVE -->
+
+            <div
+                class="wave"
+                id="wave"
+            >
+
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+
+            </div>
+
+
+
+            <!-- TEXT -->
+
+            <div
+                class="speech-text"
+                id="speechText"
+            ></div>
+
+
+        </div>
+
+
+
+        <!-- START -->
+
+        <button
+            class="start-button"
+            id="startButton"
+        >
+            INITIALIZE
+        </button>
+
+
+    </section>
+
+
+
+    <!-- =====================================
+         WE BUILD
+    ====================================== -->
+
+    <section class="build-section">
+
+
+        <div class="build-content">
+
+
+            <p class="section-label">
+
+                WEB DEVELOPMENT × SYNERGY
+
+            </p>
+
+
+            <h2>
+
+                WE BUILD THE
+
+                <br>
+
+                <span>DIGITAL GAME.</span>
+
+            </h2>
+
+
+            <p class="subtitle">
+
+                Where creativity, technology and sports
+                come together.
+
+            </p>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =====================================
+         LAVANYA
+    ====================================== -->
+
+    <section class="lavanya-section">
+
+
+        <div class="lavanya-container">
+
+
+            <!-- PHOTO -->
+
+            <div class="photo-wrapper">
+
+
+                <div class="photo-glow"></div>
+
+
+                <!-- QUIRKY TAGS -->
+
+                <div class="tag tag-one">
+
+                    ✦ LAVANYA
+
+                </div>
+
+
+                <div class="tag tag-two">
+
+                    IT 💻
+
+                </div>
+
+
+                <div class="tag tag-three">
+
+                    3RD YEAR ✨
+
+                </div>
+
+
+                <div class="arrow arrow-one">
+
+                    ↷
+
+                </div>
+
+
+                <div class="arrow arrow-two">
+
+                    ↳
+
+                </div>
+
+
+
+                <!-- YOUR PHOTO -->
+
+                <img
+                    src="images/lavanya.png"
+                    class="lavanya-photo"
+                    alt="Lavanya"
+                >
+
+
+            </div>
+
+
+
+            <!-- TEXT -->
+
+            <div class="lavanya-info">
+
+
+                <p class="mini-label">
+
+                    MEET YOUR WEB DEV CORE
+
+                </p>
+
+
+                <h2>
+
+                    HI,
+
+                    <br>
+
+                    I'M
+
+                    <span>LAVANYA.</span>
+
+                </h2>
+
+
+                <p>
+
+                    Turning ideas into experiences,
+                    pixels into products,
+                    and occasionally surviving bugs
+                    that definitely weren't supposed
+                    to happen.
+
+                </p>
+
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =====================================
+         SYNERGY WEBSITE
+    ====================================== -->
+
+    <section class="showcase">
+
+
+        <div class="showcase-header">
+
+
+            <p>
+
+                WHAT WE BUILD
+
+            </p>
+
+
+            <h2>
+
+                THE <span>SYNERGY</span>
+
+                DIGITAL EXPERIENCE.
+
+            </h2>
+
+
+        </div>
+
+
+
+        <div class="screenshots">
+
+
+            <!-- SCREENSHOT 1 -->
+
+            <div class="screenshot-card">
+
+
+                <img
+                    src="images/synergy1.png"
+                    class="screenshot-image"
+                    alt="Synergy Website"
+                >
+
+
+                <div class="card-info">
+
+                    <h3>
+
+                        The Synergy Experience
+
+                    </h3>
+
+
+                    <p>
+
+                        Building a digital identity
+                        for the game beyond the field.
+
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- SCREENSHOT 2 -->
+
+            <div class="screenshot-card">
+
+
+                <img
+                    src="images/synergy2.png"
+                    class="screenshot-image"
+                    alt="Synergy Website"
+                >
+
+
+                <div class="card-info">
+
+                    <h3>
+
+                        Built For The Community
+
+                    </h3>
+
+
+                    <p>
+
+                        Creating digital experiences
+                        for every member of Synergy.
+
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =====================================
+         STATEMENT
+    ====================================== -->
+
+    <section class="statement">
+
+
+        <h2>
+
+            WE DON'T JUST
+
+            <br>
+
+            BUILD <span>WEBSITES.</span>
+
+            <br><br>
+
+            WE BUILD
+
+            <span>EXPERIENCES.</span>
+
+        </h2>
+
+
+    </section>
+
+
+
+    <!-- =====================================
+         JOIN WEB DEV
+    ====================================== -->
+
+    <section class="final-section">
+
+
+        <div class="final-ring"></div>
+
+
+        <div class="final-content">
+
+
+            <p>
+
+                THINK YOU CAN BUILD WITH US?
+
+            </p>
+
+
+            <h2>
+
+                WELCOME
+
+                <br>
+
+                TO
+
+                <br>
+
+                <span>WEB DEV.</span>
+
+            </h2>
+
+
+            <h3>
+
+                SYNERGY × WEB DEVELOPMENT
+
+            </h3>
+
+
+            <div class="signature">
+
+
+                <div class="signature-line"></div>
+
+
+                <h4>
+
+                    BUILT BY LAVANYA
+
+                </h4>
+
+
+                <p>
+
+                    WEB DEV CORE · SYNERGY
+
+                </p>
+
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =====================================
+         JAVASCRIPT
+    ====================================== -->
+
+    <script>
+
+
+        const startButton =
+            document.getElementById("startButton");
+
+
+        const robotWrapper =
+            document.getElementById("robotWrapper");
+
+
+        const speechText =
+            document.getElementById("speechText");
+
+
+        const wave =
+            document.getElementById("wave");
+
+
+        const sentence = [
+
+            "Did",
+
+            "I",
+
+            "hear",
+
+            "Web",
+
+            "Development",
+
+            "in",
+
+            "a",
+
+            "Sports",
+
+            "Society?"
+
+        ];
+
+
+        let started = false;
+
+
+
+        /* CREATE WORDS */
+
+        function createWords() {
+
+
+            sentence.forEach(word => {
+
+
+                const span =
+                    document.createElement("span");
+
+
+                span.classList.add("word");
+
+
+                if (
+
+                    word === "Web" ||
+
+                    word === "Development"
+
+                ) {
+
+                    span.classList.add(
+                        "highlight"
+                    );
+
+                }
+
+
+                span.textContent = word;
+
+
+                speechText.appendChild(span);
+
+
+            });
+
+
+        }
+
+
+
+        /* SHOW WORD */
+
+        function showWord(index) {
+
+
+            const words =
+                document.querySelectorAll(".word");
+
+
+            if (words[index]) {
+
+
+                words[index].classList.add(
+                    "visible"
+                );
+
+
+            }
+
+
+        }
+
+
+
+        /* FALLBACK WORD ANIMATION */
+
+        function fallbackWords() {
+
+
+            const words =
+                document.querySelectorAll(".word");
+
+
+            words.forEach(
+                (word, index) => {
+
+
+                    setTimeout(() => {
+
+
+                        word.classList.add(
+                            "visible"
+                        );
+
+
+                    }, index * 400);
+
+
+                }
+            );
+
+
+        }
+
+
+
+        /* SPEAK */
+
+        function speak() {
+
+
+            const text =
+
+                "Did I hear Web Development in a Sports Society?";
+
+
+            if (
+
+                !("speechSynthesis" in window)
+
+            ) {
+
+
+                fallbackWords();
+
+
+                setTimeout(() => {
+
+
+                    document
+                        .querySelector(".build-section")
+                        .scrollIntoView({
+
+                            behavior: "smooth"
+
+                        });
+
+
+                }, 5000);
+
+
+                return;
+
+
+            }
+
+
+
+            const utterance =
+                new SpeechSynthesisUtterance(text);
+
+
+            utterance.rate = .88;
+
+            utterance.pitch = 1;
+
+            utterance.volume = 1;
+
+
+            wave.classList.add("active");
+
+
+            let wordIndex = 0;
+
+
+
+            utterance.onboundary =
+                function(event) {
+
+
+                    if (
+                        event.name === "word"
+                    ) {
+
+
+                        showWord(wordIndex);
+
+                        wordIndex++;
+
+
+                    }
+
+
+                };
+
+
+
+            /* FALLBACK */
+
+            setTimeout(() => {
+
+
+                if (wordIndex === 0) {
+
+
+                    fallbackWords();
+
+
+                }
+
+
+            }, 600);
+
+
+
+            /* VOICE FINISHED */
+
+            utterance.onend =
+                function() {
+
+
+                    wave.classList.remove(
+                        "active"
+                    );
+
+
+                    setTimeout(() => {
+
+
+                        document
+                            .querySelector(".build-section")
+                            .scrollIntoView({
+
+                                behavior: "smooth"
+
+                            });
+
+
+                    }, 1200);
+
+
+                };
+
+
+
+            window.speechSynthesis.speak(
+                utterance
+            );
+
+
+        }
+
+
+
+        /* START */
+
+        startButton.addEventListener(
+            "click",
+            function() {
+
+
+                if (started) return;
+
+
+                started = true;
+
+
+                startButton.classList.add(
+                    "hide"
+                );
+
+
+
+                /* AI ENTERS */
+
+                setTimeout(() => {
+
+
+                    robotWrapper.classList.add(
+                        "active"
+                    );
+
+
+                }, 200);
+
+
+
+                /* TEXT */
+
+                setTimeout(() => {
+
+
+                    createWords();
+
+
+                }, 900);
+
+
+
+                /* VOICE */
+
+                setTimeout(() => {
+
+
+                    speak();
+
+
+                }, 1300);
+
+
+            }
+        );
+
+
+    </script>
+
+
+</body>
+
+</html>
