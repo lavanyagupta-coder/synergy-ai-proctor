@@ -2640,103 +2640,18 @@
         function speak() {
 
 
-            const text =
-
-                "Did I hear Web Development in a Sports Society?";
-
-
-            if (
-
-                !("speechSynthesis" in window)
-
-            ) {
-
-
-                fallbackWords();
-
-
-                setTimeout(() => {
-
-
-                    document
-                        .querySelector(".build-section")
-                        .scrollIntoView({
-
-                            behavior: "smooth"
-
-                        });
-
-
-                }, 5000);
-
-
-                return;
-
-
-            }
-
-
-
-            const utterance =
-                new SpeechSynthesisUtterance(text);
-
-
-            utterance.rate = .88;
-
-            utterance.pitch = 1;
-
-            utterance.volume = 1;
-
-
             wave.classList.add("active");
 
 
-            let wordIndex = 0;
+            fallbackWords();
 
 
-
-            utterance.onboundary =
-                function(event) {
-
-
-                    if (
-                        event.name === "word"
-                    ) {
+            const audio =
+                new Audio("public/audio/initialize-voice.mp3");
 
 
-                        showWord(wordIndex);
-
-                        wordIndex++;
-
-
-                    }
-
-
-                };
-
-
-
-            /* FALLBACK */
-
-            setTimeout(() => {
-
-
-                if (wordIndex === 0) {
-
-
-                    fallbackWords();
-
-
-                }
-
-
-            }, 600);
-
-
-
-            /* VOICE FINISHED */
-
-            utterance.onend =
+            audio.addEventListener(
+                "ended",
                 function() {
 
 
@@ -2760,13 +2675,14 @@
                     }, 1200);
 
 
-                };
-
-
-
-            window.speechSynthesis.speak(
-                utterance
+                }
             );
+
+
+            audio.play();
+
+
+            return audio;
 
 
         }
@@ -2806,27 +2722,11 @@
 
 
 
-                /* TEXT */
+                /* TEXT + VOICE (started together, synchronously, so the mp3 play() call stays inside the user gesture) */
 
-                setTimeout(() => {
+                createWords();
 
-
-                    createWords();
-
-
-                }, 900);
-
-
-
-                /* VOICE */
-
-                setTimeout(() => {
-
-
-                    speak();
-
-
-                }, 1300);
+                speak();
 
 
             }
